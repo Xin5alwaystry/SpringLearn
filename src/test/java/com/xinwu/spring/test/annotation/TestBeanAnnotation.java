@@ -2,6 +2,7 @@ package com.xinwu.spring.test.annotation;
 
 import com.xinwu.spring.annotation.BeanAnnotation;
 import com.xinwu.spring.annotation.injection.service.InjectionService;
+import com.xinwu.spring.annotation.multibean.BeanInvoker;
 import com.xinwu.spring.test.base.UnitTestBase;
 import org.junit.Test;
 
@@ -44,5 +45,11 @@ public class TestBeanAnnotation extends UnitTestBase {
         //@Autowired注解在构造方法上
         InjectionService injectionService = super.getBean("injectionServiceImpl");
         injectionService.savaData("test autowire annotation by constructor method");
+    }
+
+    @Test
+    public void testMultiBean() {
+        BeanInvoker beanInvoker = super.getBean("beanInvoker");
+        beanInvoker.say();
     }
 }
