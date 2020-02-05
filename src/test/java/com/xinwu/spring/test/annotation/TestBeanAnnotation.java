@@ -1,6 +1,7 @@
 package com.xinwu.spring.test.annotation;
 
 import com.xinwu.spring.annotation.BeanAnnotation;
+import com.xinwu.spring.annotation.injection.service.InjectionService;
 import com.xinwu.spring.test.base.UnitTestBase;
 import org.junit.Test;
 
@@ -24,4 +25,24 @@ public class TestBeanAnnotation extends UnitTestBase {
         beanAnnotation2.printHashcode();
     }
 
+    @Test
+    public void testAutowireByField() {
+        //@Autowired注解在成员变量上
+        InjectionService injectionService = super.getBean("injectionServiceImpl");
+        injectionService.savaData("test autowire annotation by field");
+    }
+
+    @Test
+    public void testAutowiredBySetter() {
+        //@Autowired注解在成员变量的set方法上
+        InjectionService injectionService = super.getBean("injectionServiceImpl");
+        injectionService.savaData("test autowire annotation by set method");
+    }
+
+    @Test
+    public void testAutowiredByConstructor() {
+        //@Autowired注解在构造方法上
+        InjectionService injectionService = super.getBean("injectionServiceImpl");
+        injectionService.savaData("test autowire annotation by constructor method");
+    }
 }
