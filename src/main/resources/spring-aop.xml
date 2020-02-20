@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="myAspect" class="com.xinwu.spring.aop.MyAspect"/>
+
+    <bean id="myBusiness" class="com.xinwu.spring.aop.MyBusiness"/>
+
+    <aop:config>
+        <aop:aspect id="myAspectAOP" ref="myAspect">
+            <aop:pointcut expression="execution(* com.xinwu.spring.aop.MyBusiness.*(..))" id="myBusinessAop" />
+            <!--<aop:before method="before" pointcut-ref="myBusinessAop" />-->
+            <!--<aop:after-returning method="afterReturning" pointcut-ref="myBusinessAop"/>-->
+            <!--<aop:after-throwing method="afterThrowing" pointcut-ref="myBusinessAop" />-->
+            <!--<aop:after method="afterFinally" pointcut-ref="myBusinessAop" />-->
+            <!--<aop:around method="around" pointcut-ref="myBusinessAop" />-->
+            <aop:around method="aroundWithArgs" pointcut="execution(* com.xinwu.spring.aop.MyBusiness.testAopWithArgs(String, Integer)) and args(args1, args2)" />
+        </aop:aspect>
+    </aop:config>
+</beans>

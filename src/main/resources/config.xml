@@ -7,5 +7,5 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-<context:component-scan base-package="com.xinwu.spring.annotation"></context:component-scan>
+    <context:property-placeholder location="classpath:/config.properties"></context:property-placeholder>
 </beans>

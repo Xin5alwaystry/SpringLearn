@@ -2,6 +2,8 @@ package com.xinwu.spring.test.annotation;
 
 import com.xinwu.spring.annotation.BeanAnnotation;
 import com.xinwu.spring.annotation.injection.service.InjectionService;
+import com.xinwu.spring.annotation.javabased.MyDriverManager;
+import com.xinwu.spring.annotation.javabased.Store;
 import com.xinwu.spring.annotation.multibean.BeanInvoker;
 import com.xinwu.spring.test.base.UnitTestBase;
 import org.junit.Test;
@@ -51,5 +53,16 @@ public class TestBeanAnnotation extends UnitTestBase {
     public void testMultiBean() {
         BeanInvoker beanInvoker = super.getBean("beanInvoker");
         beanInvoker.say();
+    }
+
+    @Test
+    public void testBeanAnnotation() {
+        Store store = super.getBean("stringStore");
+        System.out.println(store.getClass().getName());
+    }
+
+    @Test
+    public void testMyDriverManager() {
+        MyDriverManager myDriverManager = super.getBean("myDriverManager");
     }
 }
